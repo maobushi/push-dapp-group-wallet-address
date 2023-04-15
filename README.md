@@ -3,13 +3,12 @@
 - push-group-wallet is a group chat sysytem with payment sysytem.
 
 ## How to use
-- `cd front`
 - `yarn install`
 - `yarn start`
 	- maybe you have to mv .env.sample .env
 
 ## build road map
-1. ~Reactのセットアップ~~
+1. ~~Reactのセットアップ~~
 1. ~~Push chat protocolを使ってグループチャット機能を実装~~
 1. ~~Hostのwalletアドレスから一時的なグループwalletアドレスを作成する~~
 	1. ~~group infoにgroup wallet addressを載せる(musthave)~~
