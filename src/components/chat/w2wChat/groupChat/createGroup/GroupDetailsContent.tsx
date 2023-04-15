@@ -23,6 +23,8 @@ export const GroupDetailsContent = ({
   groupDescriptionData,
   groupImageData,
   groupTypeObject,
+  groupWalletAddress,
+  groupWalletSeqretKey,
   handleGroupImageData,
   handleGroupNameData,
   handleGroupDescriptionData,

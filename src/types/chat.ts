@@ -88,6 +88,7 @@ export interface Feeds {
     combinedDID: string;
     cid?: string;
     groupInformation?: IGroup
+    
 }
 
 export interface TwitterFeedReturnType{

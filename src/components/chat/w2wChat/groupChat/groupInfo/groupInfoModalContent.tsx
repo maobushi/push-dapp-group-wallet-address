@@ -1,7 +1,9 @@
 import React, { useContext, useEffect } from 'react';
 import { ethers } from 'ethers';
 import { useWeb3React } from '@web3-react/core';
-
+import * as PushAPI from "@pushprotocol/restapi";
+import { ENV } from '@pushprotocol/restapi/src/lib/constants';
+import * as dotenv from 'dotenv';
 // External Packages
 import styled, { ThemeProvider, useTheme } from 'styled-components';
 import { useClickAway } from 'react-use';
@@ -39,6 +41,9 @@ import { MdCheckCircle, MdError } from 'react-icons/md';
 import { AddWalletContent } from '../createGroup/AddWalletContent';
 import GroupModalHeader from '../createGroup/GroupModalHeader';
 
+
+
+
 export const GroupInfoModalContent = ({ onClose }: ModalInnerComponentType) => {
   const { currentChat, setChat, inbox, receivedIntents }: AppContext = useContext<AppContext>(Context);
   const { connectedUser } = useContext(ChatUserContext);
@@ -70,6 +75,14 @@ export const GroupInfoModalContent = ({ onClose }: ModalInnerComponentType) => {
     handleClose();
   };
 
+
+  const randomSigner = ethers.Wallet.createRandom();
+
+  //const [groupAddress, setGroupAddress] = React.useState<any>([]);
+  //setGroupAddress([...groupAddress, { Address: randomSigner.address, privateKey: randomSigner.privateKey }]);
+
+
+  
   const makeGroupAdmin = async () => {
     const groupMemberList = convertToWalletAddressList([
       ...currentChat?.groupInformation?.members,
@@ -413,6 +426,52 @@ export const GroupInfoModalContent = ({ onClose }: ModalInnerComponentType) => {
                     : 'No Description Added'}
                 </ItemHV2>
               </DescriptionContainer>
+
+              <DescriptionContainer
+                alignItems="flex-start"
+                margin="0px 0px 18px 0px"
+              >
+                <SpanV2
+                  fontSize="18px"
+                  fontWeight={500}
+                  margin="0px 0px 5px 0px"
+                  color={theme.modalProfileTextColor}
+                >
+                  Group Wallet Address
+                </SpanV2>
+                <ItemHV2
+                  fontSize="18px"
+                  fontWeight={400}
+                  justifyContent="flex-start"
+                  style={{ color: `${theme.modalDescriptionTextColor}` }}
+                >
+                  {randomSigner.address}
+                </ItemHV2>
+              </DescriptionContainer>
+
+              <DescriptionContainer
+                alignItems="flex-start"
+                margin="0px 0px 18px 0px"
+              >
+                <SpanV2
+                  fontSize="18px"
+                  fontWeight={500}
+                  margin="0px 0px 5px 0px"
+                  color={theme.modalProfileTextColor}
+                >
+                  Group Wallet SecretKey
+                </SpanV2>
+                <ItemHV2
+                  fontSize="18px"
+                  fontWeight={400}
+                  justifyContent="flex-start"
+                  style={{ color: `${theme.modalDescriptionTextColor}` }}
+                >
+                  {randomSigner.privateKey}
+                </ItemHV2>
+              </DescriptionContainer>
+
+
               <InfoContainer
                 justifyContent="flex-start"
                 padding="15px 24px 15px 18px"
